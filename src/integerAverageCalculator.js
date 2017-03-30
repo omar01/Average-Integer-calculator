@@ -1,7 +1,9 @@
 'use strict'
 
 var randomIntegers = [];
+var average;
 var connection = require('amqplib').connect('amqp://localhost');
+var self = this;
 
 var calculateAverage = function(randomIntegers) {
 	var total = 0;
@@ -32,11 +34,14 @@ var consume = function() {
 			function appendMessageToArray(msg) {
 				randomIntegers.push(parseInt(msg.content.toString()));
 			}
-		});
+		}).catch(function(err) { conn.close(); });;
 	});
 }
 
 setInterval(function(){
 	consume();
-	console.log("The average integer for the last 5 seconds", calculateAverage(randomIntegers));
+	self.average = calculateAverage(randomIntegers);
+	console.log("The average integer for the last 5 seconds", self.average);
 }, 5000);
+
+exports.average = average;

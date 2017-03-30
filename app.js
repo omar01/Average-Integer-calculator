@@ -3,6 +3,7 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var integerAverageCalculator = require('./src/integerAverageCalculator');
 
 var app = express();
 
@@ -14,7 +15,14 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-  res.render('average');
+  res.redirect('/average');
+});
+
+app.get('/average', function (req, res) {
+  if (isNaN(integerAverageCalculator.average)) {
+    res.render('average', { average: 0 });
+  }
+  res.render('average', { average: integerAverageCalculator.average });
 });
 
 // catch 404 and forward to error handler
