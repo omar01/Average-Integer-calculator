@@ -1,7 +1,8 @@
 'use strict'
 
 var randomInt = require('random-int');
-var connection = require('amqplib').connect('amqp://localhost');
+var rabbitMq = require('../config').get('RABBIT_MQ');
+var connection = require('amqplib').connect('amqp://' + rabbitMq.host + ':' +rabbitMq.port);
 
 var publish = function(){
 	connection.then(function(conn) {

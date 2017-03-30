@@ -2,7 +2,8 @@
 
 var randomIntegers = [];
 var average;
-var connection = require('amqplib').connect('amqp://localhost');
+var rabbitMq = require('../config').get('RABBIT_MQ');
+var connection = require('amqplib').connect('amqp://' + rabbitMq.host + ':' +rabbitMq.port);
 var self = this;
 
 var calculateAverage = function(randomIntegers) {

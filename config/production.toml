@@ -1,0 +1,5 @@
+# configuration for Prod Environment
+
+[RABBIT_MQ]
+
+#

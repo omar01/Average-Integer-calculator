@@ -1,0 +1,7 @@
+# configuration for Local Environment
+
+[RABBIT_MQ]
+host = "localhost"
+port = 5672
+
+#
