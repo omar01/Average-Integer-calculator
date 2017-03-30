@@ -6,12 +6,15 @@
     "node": ">=7.8.0"
   },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "startPublisher": "node src/integerGenerator.js"
   },
   "dependencies": {
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "morgan": "~1.8.1",
-    "jade": "~1.11.0"
+    "jade": "~1.11.0",
+    "random-int": "~1.0.0",
+    "amqplib": "~0.5.1"
   }
 }
